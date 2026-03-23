@@ -9,7 +9,6 @@
 <style>
   :root {
     --navy: #1a2744;
-    --navy-mid: #243358;
     --navy-light: #2f4070;
     --sage: #7a9e8e;
     --sage-light: #a8c5b8;
@@ -18,517 +17,158 @@
     --warm-white: #fdfcfa;
     --text-dark: #1a1a1a;
     --text-mid: #4a4a4a;
-    --text-light: #777;
+    --text-light: #888;
     --gold: #b8986a;
     --gold-light: #d4b98a;
-    --border: rgba(26, 39, 68, 0.12);
+    --border: rgba(26,39,68,0.1);
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--warm-white); color: var(--text-dark); line-height: 1.7; font-size: 15px; }
 
-  body {
-    font-family: var(--sans);
-    background: var(--warm-white);
-    color: var(--text-dark);
-    line-height: 1.7;
-    font-size: 15px;
-  }
-
-  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(253,252,250,0.96);
-    backdrop-filter: blur(12px);
+    background: rgba(253,252,250,0.97); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: 0 max(24px, 5vw);
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
+    display: flex; align-items: center; justify-content: space-between; height: 58px;
   }
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--navy);
-    letter-spacing: 0.01em;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex; gap: 32px; list-style: none;
-  }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-name { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--navy); letter-spacing: 0.02em; text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 11px; font-weight: 400; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--navy); }
 
-  /* ── LAYOUT ── */
-  .page-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 max(24px, 5vw);
-  }
+  .page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 max(24px, 5vw); }
+  section { padding: 80px 0; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); margin-bottom: 10px; }
+  .section-title { font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 40px; }
 
-  section {
-    padding: 80px 0;
-  }
+  #about { padding-top: 130px; padding-bottom: 80px; display: grid; grid-template-columns: 1fr 290px; gap: 68px; align-items: start; }
 
-  .section-label {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 12px;
-  }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--sage); }
 
-  .section-title {
-    font-family: var(--serif);
-    font-size: 36px;
-    font-weight: 400;
-    color: var(--navy);
-    line-height: 1.2;
-    margin-bottom: 40px;
-  }
+  .hero-name { font-family: var(--serif); font-size: clamp(48px, 5.5vw, 66px); font-weight: 300; color: var(--navy); line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 14px; white-space: nowrap; }
+  .hero-name em { font-style: italic; color: var(--navy-light); }
 
-  /* ── HERO ── */
-  #about {
-    padding-top: 140px;
-    padding-bottom: 80px;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 80px;
-    align-items: start;
-  }
+  .hero-sub { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--text-mid); font-style: italic; margin-bottom: 24px; }
+  .hero-bio { font-size: 15px; color: var(--text-mid); line-height: 1.85; max-width: 560px; margin-bottom: 26px; }
 
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--sage); margin-bottom: 20px;
-  }
-  .hero-tag::before {
-    content: '';
-    display: block; width: 24px; height: 1px; background: var(--sage);
-  }
+  .research-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 30px; }
+  .research-tag { font-size: 11px; font-weight: 400; padding: 4px 12px; border: 1px solid var(--border); border-radius: 20px; color: var(--text-mid); background: var(--cream); }
 
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(42px, 5vw, 60px);
-    font-weight: 300;
-    color: var(--navy);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--navy-light);
-  }
-
-  .hero-sub {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-mid);
-    font-style: italic;
-    margin-bottom: 28px;
-  }
-
-  .hero-bio {
-    font-size: 15.5px;
-    color: var(--text-mid);
-    line-height: 1.8;
-    max-width: 580px;
-    margin-bottom: 32px;
-  }
-
-  .research-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px;
-  }
-  .research-tag {
-    font-size: 12px; font-weight: 400;
-    padding: 5px 13px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    color: var(--text-mid);
-    background: var(--cream);
-  }
-
-  .hero-links {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--navy);
-    color: #fff;
-    font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
-    padding: 11px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
+  .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 7px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 400; letter-spacing: 0.05em; padding: 10px 20px; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
   .btn-primary:hover { background: var(--navy-light); }
-  .btn-outline {
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid var(--border);
-    color: var(--navy);
-    font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
-    padding: 10px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    background: transparent;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--navy); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(26,39,68,0.2); color: var(--navy); font-size: 12px; font-weight: 400; letter-spacing: 0.05em; padding: 9px 20px; border-radius: 3px; text-decoration: none; background: transparent; transition: border-color 0.2s, background 0.15s; }
+  .btn-outline:hover { border-color: var(--navy); background: rgba(26,39,68,0.03); }
 
-  /* ── PHOTO CARD ── */
-  .profile-card {
-    position: sticky; top: 80px;
-  }
-  .profile-photo-wrap {
-    width: 100%;
-    aspect-ratio: 3/4;
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--cream-dark);
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .profile-photo-placeholder {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 12px;
-    background: linear-gradient(160deg, var(--cream-dark) 0%, var(--cream) 100%);
-  }
-  .profile-photo-placeholder svg {
-    width: 64px; height: 64px; opacity: 0.3;
-  }
-  .profile-photo-placeholder span {
-    font-size: 12px; color: var(--text-light); text-align: center; padding: 0 20px;
-  }
-  .profile-info {
-    padding: 4px 0;
-  }
-  .profile-info-line {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 13.5px; color: var(--text-mid);
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .profile-card { position: sticky; top: 74px; }
+  .profile-photo-wrap { width: 100%; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: var(--cream-dark); margin-bottom: 16px; }
+  .profile-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .profile-info-line { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text-mid); padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
   .profile-info-line:last-child { border-bottom: none; }
-  .profile-info-line svg { flex-shrink: 0; margin-top: 3px; opacity: 0.5; }
+  .profile-info-line svg { flex-shrink: 0; margin-top: 2px; opacity: 0.4; }
+  .profile-info-line a { color: var(--navy); text-decoration: none; }
+  .profile-info-line a:hover { text-decoration: underline; }
 
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
-  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-  /* ── RESEARCH ── */
-  #research { background: var(--warm-white); }
-
-  .papers-list {
-    display: flex; flex-direction: column; gap: 1px;
-  }
-
-  .paper-item {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 36px 1fr;
-    gap: 0 20px;
-    align-items: start;
-    transition: background 0.15s;
-  }
+  .papers-list { display: flex; flex-direction: column; }
+  .paper-item { padding: 26px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 30px 1fr; gap: 0 16px; align-items: start; }
   .paper-item:first-child { border-top: 1px solid var(--border); }
-
-  .paper-num {
-    font-family: var(--serif);
-    font-size: 13px;
-    color: var(--text-light);
-    font-style: italic;
-    padding-top: 3px;
-  }
-
-  .paper-content {}
-
-  .paper-status {
-    display: inline-block;
-    font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--sage);
-    background: rgba(122,158,142,0.1);
-    padding: 3px 9px; border-radius: 3px;
-    margin-bottom: 8px;
-  }
+  .paper-num { font-family: var(--serif); font-size: 13px; color: var(--text-light); font-style: italic; padding-top: 2px; }
+  .paper-status { display: inline-block; font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); background: rgba(122,158,142,0.1); padding: 3px 8px; border-radius: 2px; margin-bottom: 7px; }
   .paper-status.solo { color: var(--gold); background: rgba(184,152,106,0.1); }
-
-  .paper-title {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.35;
-    margin-bottom: 6px;
-  }
-
-  .paper-authors {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    margin-bottom: 4px;
-  }
+  .paper-title { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--navy); line-height: 1.3; margin-bottom: 5px; }
+  .paper-authors { font-size: 13px; color: var(--text-mid); margin-bottom: 3px; }
   .paper-authors strong { color: var(--text-dark); font-weight: 500; }
-
-  .paper-year {
-    font-size: 12.5px; color: var(--text-light);
-  }
-
-  .paper-abstract {
-    display: none;
-    margin-top: 12px;
-    font-size: 14px;
-    color: var(--text-mid);
-    line-height: 1.75;
-    padding: 14px 16px;
-    background: var(--cream);
-    border-radius: 4px;
-    border-left: 3px solid var(--sage-light);
-  }
+  .paper-year { font-size: 12px; color: var(--text-light); }
+  .paper-links { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .paper-link { font-size: 11px; font-weight: 500; letter-spacing: 0.05em; color: var(--navy); text-decoration: none; border: 1px solid rgba(26,39,68,0.18); padding: 3px 10px; border-radius: 2px; transition: background 0.15s; display: inline-flex; align-items: center; gap: 5px; }
+  .paper-link:hover { background: var(--cream); }
+  .paper-abstract { display: none; margin-top: 12px; font-size: 13.5px; color: var(--text-mid); line-height: 1.8; padding: 14px 16px; background: var(--cream); border-radius: 3px; border-left: 2px solid var(--sage-light); }
   .paper-abstract.open { display: block; }
-
-  .paper-toggle {
-    background: none; border: none; cursor: pointer;
-    font-size: 12px; color: var(--sage); font-family: var(--sans);
-    font-weight: 500; letter-spacing: 0.04em;
-    padding: 0; margin-top: 10px;
-    display: inline-flex; align-items: center; gap: 5px;
-    transition: color 0.2s;
-  }
+  .paper-toggle { background: none; border: none; cursor: pointer; font-size: 11.5px; color: var(--sage); font-family: var(--sans); font-weight: 500; letter-spacing: 0.05em; padding: 0; margin-top: 10px; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; }
   .paper-toggle:hover { color: var(--navy); }
   .paper-toggle svg { transition: transform 0.2s; }
   .paper-toggle.open svg { transform: rotate(180deg); }
 
-  /* ── PRESENTATIONS ── */
-  #presentations {
-    background: var(--cream);
-  }
-
-  .pres-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .pres-year-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 24px;
-  }
-
-  .pres-year {
-    font-family: var(--serif);
-    font-size: 32px; font-weight: 300;
-    color: var(--navy);
-    margin-bottom: 14px;
-    line-height: 1;
-  }
-
-  .pres-venues {
-    list-style: none;
-  }
-  .pres-venues li {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    padding: 5px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: baseline; gap: 8px;
-    line-height: 1.4;
-  }
+  #presentations { background: var(--cream); }
+  .pres-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 16px; }
+  .pres-year-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 4px; padding: 22px; }
+  .pres-year { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--navy); margin-bottom: 14px; line-height: 1; }
+  .pres-venues { list-style: none; }
+  .pres-venues li { font-size: 13px; color: var(--text-mid); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 7px; line-height: 1.4; }
   .pres-venues li:last-child { border-bottom: none; }
-  .pres-venues li::before {
-    content: '';
-    display: inline-block; width: 4px; height: 4px;
-    border-radius: 50%; background: var(--sage);
-    flex-shrink: 0; margin-bottom: 2px;
-  }
-  .pres-star {
-    font-size: 10px; color: var(--gold); margin-left: 2px;
-  }
+  .pres-venues li::before { content: ''; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--sage); flex-shrink: 0; margin-bottom: 2px; }
+  .pres-star { font-size: 10px; color: var(--gold); margin-left: 1px; }
 
-  /* ── TEACHING ── */
   #teaching { background: var(--warm-white); }
-
-  .teaching-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .teaching-school {
-    padding: 28px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-  }
-
-  .school-name {
-    font-family: var(--serif);
-    font-size: 18px; font-weight: 500;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .school-dept {
-    font-size: 12.5px; color: var(--text-light);
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  .course-list {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .course-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
+  .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .teaching-school { padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
+  .school-name { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .school-dept { font-size: 12px; color: var(--text-light); margin-bottom: 16px; font-style: italic; }
+  .course-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .course-item { display: flex; align-items: flex-start; gap: 9px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   .course-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .course-role {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: #fff;
-    background: var(--navy);
-    padding: 3px 7px; border-radius: 3px;
-    white-space: nowrap; flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .course-role.ta {
-    background: var(--sage);
-  }
-  .course-name {
-    font-size: 14px; color: var(--text-dark);
-    line-height: 1.4;
-  }
+  .course-role { font-size: 9px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: #fff; background: var(--navy); padding: 3px 7px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .course-role.ta { background: var(--sage); }
+  .course-name { font-size: 13.5px; color: var(--text-dark); line-height: 1.4; }
 
-  /* ── PUBLIC GOODS ── */
   #public-goods { background: var(--cream); }
+  .pg-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+  .pg-section-title { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--navy); margin-bottom: 14px; margin-top: 32px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .pg-section-title:first-of-type { margin-top: 0; }
+  .pg-links { list-style: none; display: flex; flex-direction: column; }
+  .pg-links li { padding: 11px 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 3px; }
+  .pg-links li:last-child { border-bottom: none; }
+  .pg-links a { font-size: 13.5px; font-weight: 500; color: var(--navy); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 5px; }
+  .pg-links a:hover { color: var(--sage); }
+  .pg-links a::after { content: '↗'; font-size: 11px; opacity: 0.45; }
+  .pg-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.5; }
+  .pg-service-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 14px; }
+  .pg-service-card:last-child { margin-bottom: 0; }
+  .pg-service-card h4 { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .pg-service-card p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+  .pg-service-card .meta { margin-top: 8px; font-size: 11.5px; color: var(--text-light); font-style: italic; }
 
-  .public-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .public-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 28px;
-  }
-  .public-card-icon {
-    width: 40px; height: 40px;
-    background: var(--cream);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-  }
-  .public-card h3 {
-    font-family: var(--serif);
-    font-size: 19px; font-weight: 500;
-    color: var(--navy); margin-bottom: 8px;
-  }
-  .public-card p {
-    font-size: 14px; color: var(--text-mid);
-    line-height: 1.7;
-  }
-
-  /* ── CV ── */
-  #cv {
-    background: var(--navy);
-    padding: 80px 0;
-    text-align: center;
-  }
+  #cv { background: var(--navy); padding: 80px 0; text-align: center; }
   #cv .section-label { color: var(--sage-light); }
-  #cv .section-title { color: #fff; margin-bottom: 16px; }
-  #cv p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 32px; }
-  .cv-awards {
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
-    margin-bottom: 36px;
-  }
-  .cv-award-pill {
-    font-size: 13px;
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 6px 16px; border-radius: 20px;
-  }
-  .btn-cv {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
-    padding: 14px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
+  #cv .section-title { color: #fff; margin-bottom: 12px; }
+  #cv > .page-wrap > p { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 26px; }
+  .cv-awards { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+  .cv-award-pill { font-size: 12px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.16); padding: 5px 14px; border-radius: 20px; }
+  .btn-cv { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; padding: 13px 28px; border-radius: 3px; text-decoration: none; transition: background 0.2s; }
   .btn-cv:hover { background: var(--gold-light); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 32px max(24px, 5vw);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 16px;
-  }
-  footer p {
-    font-size: 13px; color: rgba(255,255,255,0.4);
-  }
-  .footer-links {
-    display: flex; gap: 20px; list-style: none;
-  }
-  .footer-links a {
-    font-size: 13px; color: rgba(255,255,255,0.4);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.07); padding: 26px max(24px,5vw); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-links { display: flex; gap: 16px; list-style: none; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.65); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up {
-    animation: fadeUp 0.6s ease both;
-  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.6s ease both; }
   .delay-1 { animation-delay: 0.1s; }
   .delay-2 { animation-delay: 0.2s; }
   .delay-3 { animation-delay: 0.3s; }
   .delay-4 { animation-delay: 0.4s; }
 
-  /* ── MOBILE ── */
   @media (max-width: 820px) {
     #about { grid-template-columns: 1fr; }
-    .profile-card { position: static; display: none; }
-    .teaching-grid, .public-grid { grid-template-columns: 1fr; }
-    .nav-links { gap: 18px; }
-    .nav-links li:nth-child(n+4) { display: none; }
+    .profile-card { position: static; max-width: 240px; }
+    .teaching-grid, .pg-cols { grid-template-columns: 1fr; }
+    .nav-links li:nth-child(n+5) { display: none; }
     .pres-grid { grid-template-columns: 1fr; }
+    .hero-name { white-space: normal; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
   <a href="#about" class="nav-name">Golnaz Bahrami</a>
   <ul class="nav-links">
@@ -540,18 +180,16 @@
   </ul>
 </nav>
 
-<!-- ── HERO / ABOUT ── -->
 <div class="page-wrap">
   <section id="about">
     <div>
-      <div class="hero-tag fade-up">Finance · Penn State University</div>
-      <h1 class="hero-name fade-up delay-1">Golnaz<br><em>Bahrami</em></h1>
-      <p class="hero-sub fade-up delay-2">PhD Candidate in Finance</p>
+      <div class="hero-eyebrow fade-up">PhD Candidate · Penn State University</div>
+      <h1 class="hero-name fade-up delay-1">Golnaz <em>Bahrami</em></h1>
+      <p class="hero-sub fade-up delay-2">Finance · Smeal College of Business</p>
       <p class="hero-bio fade-up delay-3">
-        I am a PhD candidate in Finance at the Smeal College of Business, Pennsylvania State University, 
-        expecting to complete my degree in 2027. My research lies at the intersection of 
-        climate finance, real estate, and corporate finance — studying how environmental risks 
-        and regulations shape financial markets, housing decisions, and firm behavior.
+        I am a PhD candidate in Finance at the Smeal College of Business, Pennsylvania State University.
+        My research lies at the intersection of climate finance, real estate, and corporate finance —
+        studying how environmental risks and regulations shape financial markets, housing decisions, and firm behavior.
       </p>
       <div class="research-tags fade-up delay-3">
         <span class="research-tag">Climate &amp; Environmental Finance</span>
@@ -562,40 +200,36 @@
       </div>
       <div class="hero-links fade-up delay-4">
         <a href="mailto:gxb5298@psu.edu" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           gxb5298@psu.edu
         </a>
-        <a href="#cv" class="btn-outline">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <a href="Golnaz_Bahrami_CV.pdf" class="btn-outline" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV
         </a>
-        <a href="#research" class="btn-outline">View Research</a>
+        <a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank" class="btn-outline">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Google Scholar
+        </a>
       </div>
     </div>
 
-    <!-- Profile card -->
     <div class="profile-card fade-up delay-2">
       <div class="profile-photo-wrap">
-        <div class="profile-photo-placeholder">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="30" r="16" stroke="#1a2744" stroke-width="1.5"/>
-            <path d="M10 70c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="#1a2744" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span>Add your photo here<br><small style="opacity:.6">Replace this placeholder in the HTML</small></span>
-        </div>
+        <img src="GB_Portrait.jpg" alt="Golnaz Bahrami">
       </div>
       <div class="profile-info">
         <div class="profile-info-line">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           <span>318A Smeal College of Business<br>University Park, PA 16802</span>
         </div>
         <div class="profile-info-line">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <span>gxb5298@psu.edu</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <a href="mailto:gxb5298@psu.edu">gxb5298@psu.edu</a>
         </div>
         <div class="profile-info-line">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span>US Permanent Resident</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank">Google Scholar</a>
         </div>
       </div>
     </div>
@@ -604,12 +238,10 @@
 
 <hr class="divider">
 
-<!-- ── RESEARCH ── -->
 <div class="page-wrap">
   <section id="research">
     <div class="section-label">Working Papers</div>
     <h2 class="section-title">Research</h2>
-
     <div class="papers-list">
 
       <div class="paper-item">
@@ -619,13 +251,8 @@
           <div class="paper-title">When Locking In Biodiversity Locks Up Land</div>
           <div class="paper-authors">with <strong>Matthew Gustafson</strong> and <strong>Eva Steiner</strong></div>
           <div class="paper-year">2026</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            This paper examines how conservation policies aimed at protecting biodiversity affect land use, property values, and local economic activity. Using variation in conservation easement adoption, we identify the causal effects of restricting land development on surrounding real estate markets and community welfare.
-          </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">We provide new evidence on how U.S. biodiversity protections affect private land markets using a comprehensive, nationwide parcel-level panel of conservation easements, land values, and land use. Parcels near future easement borders show no preexisting differences or trends in values or land cover. After protection, newly protected parcels experience 40–50% declines in value relative to comparable unprotected parcels, driven almost entirely by losses on protected parcels rather than gains on unprotected ones. These effects are concentrated where development option values are highest, reflecting value losses from foregone development. Protections also substantially reduce observed development rates. The results underscore nuanced trade-offs between conservation, land value, and development.</div>
         </div>
       </div>
 
@@ -636,13 +263,8 @@
           <div class="paper-title">Environmental Certainty and Homeowner Investment: Evidence from Conservation Easements</div>
           <div class="paper-authors">with <strong>Matthew Gustafson</strong> and <strong>Eva Steiner</strong></div>
           <div class="paper-year">2026</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            We study how environmental certainty affects homeowner investment decisions. Exploiting quasi-random variation in the placement of conservation easements, we show that reducing uncertainty about future land use near residential properties increases homeowner willingness to invest in property improvements, consistent with theories of option value and real investment under uncertainty.
-          </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">We study how resolving local land-use uncertainty affects household reinvestment. We assemble a nationwide panel linking single-family properties in Cotality to newly established conservation easements in PAD-US and compare homes very near an easement boundary to otherwise similar homes slightly farther away. Using property fixed effects and easement-by-year fixed effects in an event-study design, we find that homes within 100 meters of a newly formed easement experience an approximately 1.5–2% increase in assessed improvement value relative to homes 100–500 meters away, with no evidence of differential pre-trends and effects that attenuate with distance. The valuation response is mirrored by real investment behavior: by three years after formation, proximate homes are about 1.6 percentage points more likely to exhibit a change in total living area and about 1.6 percentage points more likely to change bedroom or bathroom configurations, with larger effects under a stricter adjacency definition. Heterogeneity by proxies for homeowners' relative focus on consumption versus resale value is consistent with a consumption mechanism rather than local amenity level or resale-driven effects. Together, the results indicate that reducing development uncertainty can trigger highly localized, gradual increases in reinvestment in the existing housing stock.</div>
         </div>
       </div>
 
@@ -653,13 +275,14 @@
           <div class="paper-title">Burning Signals: Wildfire Hazard Zones and Housing Market Reactions</div>
           <div class="paper-authors">with <strong>Pouya Arab</strong></div>
           <div class="paper-year">2026</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            We examine how the designation of wildfire hazard zones affects housing markets. Using discontinuities in the mapping process, we estimate the causal impact of hazard zone classifications on home prices, insurance costs, and buyer behavior, with implications for climate risk pricing in residential real estate.
+          <div class="paper-links">
+            <a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank" class="paper-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Google Scholar
+            </a>
           </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">As climate-driven wildfires intensify, their economic impact on real estate markets is crucial. This paper investigates how the disclosure and regulatory aspects of California's 2007 Fire Hazard Severity Zone (FHSZ) maps affected housing prices and mortgage outcomes. We model the policy through two competing channels — the "hardening mechanism" (positive price effect from safety codes) and the "information shock mechanism" (negative price effect from risk disclosure). Using Difference-in-Differences and Spatial Regression Discontinuity, we find the net price effect is generally negative for Very High Risk areas, as the information shock dominates. In the credit market, the probability of mortgaged purchases rises in Moderate and High Risk zones, while financing tightens in Very High Risk areas. These results show that climate-risk disclosure is not neutral, causing dynamic and locally different changes in asset values and credit conditions.</div>
         </div>
       </div>
 
@@ -670,13 +293,14 @@
           <div class="paper-title">Passive Debt Ownership and Corporate Financial Policy</div>
           <div class="paper-authors">with <strong>Brian Gibbons</strong></div>
           <div class="paper-year">2026</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            We investigate how the rise of passive investing in corporate debt markets affects firm financial policy. Passive ownership of corporate bonds may weaken creditor monitoring, alter covenant enforcement, and change the cost of external finance — with downstream effects on leverage, investment, and risk-taking.
+          <div class="paper-links">
+            <a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank" class="paper-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Google Scholar
+            </a>
           </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">The rise in passively managed corporate debt funds has resulted in an increasingly inelastic demand for corporate debt. In this study, we quantify how passive debt ownership affects firms' financial policy. Using fund-specific flows to capture firm-level changes in passive debt ownership that are exogenous to firm fundamentals, we find that firms respond to higher levels of passive debt ownership by increasing leverage. The borrower-friendly terms provided by passive debtholders could also theoretically lead to several potential changes in investment or payout policy. We show that passive debt holding does not affect investment policy. Instead, higher passive ownership predicts increased dividend payouts — even for firms far from index thresholds — exacerbating shareholder-debtholder conflicts. Passive debtholders enable these effects by reducing aggregate ex-ante and ex-post monitoring. The presence of a bank monitor moderates the relationship between passive debt ownership and increased payout, reinforcing the importance of this monitoring channel.</div>
         </div>
       </div>
 
@@ -687,13 +311,14 @@
           <div class="paper-title">Environmental Risk in Municipal Bond Markets: The Role of Air Pollution</div>
           <div class="paper-authors">with <strong>Mansoor Shekarian</strong></div>
           <div class="paper-year">2025</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            We study how local air pollution exposure affects municipal bond yields and credit spreads. Municipalities in high-pollution areas face higher borrowing costs, consistent with investors pricing environmental risk into public debt. The effect is stronger for bonds issued by municipalities with greater fiscal dependence on pollution-intensive industries.
+          <div class="paper-links">
+            <a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank" class="paper-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Google Scholar
+            </a>
           </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">We study whether local air pollution is priced in municipal bond markets. Exploiting quasi-experimental variation in county-level fine particulate matter (PM2.5) from (i) Clean Air Act nonattainment designations beginning in 2005 and (ii) staggered coal-plant retirements, we find that municipalities in more polluted counties issue debt at higher offering yields and yield spreads. A one-standard deviation increase in log PM2.5 raises municipal bond yield spreads by 1.1 basis points, adding about $259 million in annual interest costs across U.S. counties in our sample. The pollution premium is larger for bonds with greater repayment risk and for longer maturities, consistent with investors pricing persistent credit risk. We provide evidence for three reinforcing fiscal mechanisms — higher local hospital expenditures, lower intergovernmental transfers, and weaker tax revenues — linking pollution to tighter fiscal conditions. Overall, the findings indicate that air quality is capitalized in municipal borrowing costs and meaningfully constrains local governments' fiscal capacity.</div>
         </div>
       </div>
 
@@ -704,13 +329,8 @@
           <div class="paper-title">Extreme Weather, Household Relocation, and Real Estate Decisions</div>
           <div class="paper-authors"><strong>Golnaz Bahrami</strong></div>
           <div class="paper-year">2026</div>
-          <button class="paper-toggle" onclick="toggleAbstract(this)">
-            Abstract
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="paper-abstract">
-            I examine how exposure to extreme weather events affects household migration decisions and real estate markets. Using detailed household-level data linked to weather shocks, I estimate the causal effect of climate events on residential relocation, property devaluation, and long-run regional population dynamics.
-          </div>
+          <button class="paper-toggle" onclick="toggleAbstract(this)">Abstract <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="paper-abstract">I examine how exposure to extreme weather events affects household migration decisions and real estate markets. Using detailed household-level data linked to weather shocks, I estimate the causal effect of climate events on residential relocation, property devaluation, and long-run regional population dynamics.</div>
         </div>
       </div>
 
@@ -720,18 +340,15 @@
 
 <hr class="divider">
 
-<!-- ── PRESENTATIONS ── -->
 <section id="presentations">
   <div class="page-wrap">
-    <div class="section-label">Academic Conferences &amp; Seminars</div>
+    <div class="section-label">Conferences &amp; Seminars</div>
     <h2 class="section-title">Presentations</h2>
-    <p style="font-size:13.5px;color:var(--text-light);margin-bottom:36px;">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Asterisk (*) denotes scheduled / invited presentations
+    <p style="font-size:12.5px;color:var(--text-light);margin-bottom:30px;display:flex;align-items:center;gap:6px;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Asterisk (*) denotes presentations by coauthors
     </p>
-
     <div class="pres-grid">
-
       <div class="pres-year-card">
         <div class="pres-year">2026</div>
         <ul class="pres-venues">
@@ -743,7 +360,6 @@
           <li>Boulder Summer Conference</li>
         </ul>
       </div>
-
       <div class="pres-year-card">
         <div class="pres-year">2025</div>
         <ul class="pres-venues">
@@ -760,7 +376,6 @@
           <li>AFA PhD Student Poster Session<span class="pres-star">*</span></li>
         </ul>
       </div>
-
       <div class="pres-year-card">
         <div class="pres-year">2024</div>
         <ul class="pres-venues">
@@ -776,7 +391,6 @@
           <li>Lehigh University<span class="pres-star">*</span></li>
         </ul>
       </div>
-
       <div class="pres-year-card">
         <div class="pres-year">2022–23</div>
         <ul class="pres-venues">
@@ -787,149 +401,140 @@
           <li>U of Oregon Lundquist College<span class="pres-star">*</span></li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- ── TEACHING ── -->
 <div class="page-wrap">
   <section id="teaching">
     <div class="section-label">Instruction &amp; Mentorship</div>
     <h2 class="section-title">Teaching</h2>
-
     <div class="teaching-grid">
-
       <div class="teaching-school">
         <div class="school-name">Penn State University</div>
-        <div class="school-dept">Smeal College of Business, Finance Department</div>
+        <div class="school-dept">Smeal College of Business · Finance</div>
         <ul class="course-list">
-          <li class="course-item">
-            <span class="course-role">Instructor</span>
-            <span class="course-name">FIN 410 — Derivative Markets</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role ta">TA</span>
-            <span class="course-name">FIN 871 — Strategic Financial Management</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role ta">TA</span>
-            <span class="course-name">FIN 410 — Derivative Markets</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role ta">TA</span>
-            <span class="course-name">FIN 406 — Security Analysis &amp; Portfolio Management</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role ta">TA</span>
-            <span class="course-name">FIN 405 — Advanced Financial Management</span>
-          </li>
+          <li class="course-item"><span class="course-role">Instructor</span><span class="course-name">FIN 410 — Derivative Markets</span></li>
+          <li class="course-item"><span class="course-role ta">TA</span><span class="course-name">FIN 871 — Strategic Financial Management</span></li>
+          <li class="course-item"><span class="course-role ta">TA</span><span class="course-name">FIN 410 — Derivative Markets</span></li>
+          <li class="course-item"><span class="course-role ta">TA</span><span class="course-name">FIN 406 — Security Analysis &amp; Portfolio Management</span></li>
+          <li class="course-item"><span class="course-role ta">TA</span><span class="course-name">FIN 405 — Advanced Financial Management</span></li>
         </ul>
       </div>
-
       <div class="teaching-school">
         <div class="school-name">University of Oregon</div>
-        <div class="school-dept">Mathematics Department, Lundquist College</div>
+        <div class="school-dept">Mathematics Department</div>
         <ul class="course-list">
-          <li class="course-item">
-            <span class="course-role">Instructor</span>
-            <span class="course-name">Calculus</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role">Instructor</span>
-            <span class="course-name">Statistics &amp; Probability</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role">Instructor</span>
-            <span class="course-name">Abstract Algebra</span>
-          </li>
-          <li class="course-item">
-            <span class="course-role ta">TA</span>
-            <span class="course-name">Business Calculus, Statistics, Number Theory, Topology</span>
-          </li>
+          <li class="course-item"><span class="course-role">Instructor</span><span class="course-name">Calculus</span></li>
+          <li class="course-item"><span class="course-role">Instructor</span><span class="course-name">Statistics &amp; Probability</span></li>
+          <li class="course-item"><span class="course-role">Instructor</span><span class="course-name">Abstract Algebra</span></li>
+          <li class="course-item"><span class="course-role ta">TA</span><span class="course-name">Business Calculus, Statistics, Number Theory, Topology</span></li>
         </ul>
       </div>
-
     </div>
   </section>
 </div>
 
 <hr class="divider">
 
-<!-- ── PUBLIC GOODS ── -->
 <section id="public-goods">
   <div class="page-wrap">
-    <div class="section-label">Service &amp; Community</div>
+    <div class="section-label">Resources &amp; Service</div>
     <h2 class="section-title">Public Goods</h2>
+    <div class="pg-cols">
 
-    <div class="public-grid">
+      <div>
+        <div class="pg-section-title">Research Resources</div>
+        <ul class="pg-links">
+          <li>
+            <a href="https://sangmino.notion.site/1a897b8106ca44eeaf31dcd5ae5a61b1?v=ff7dc75862c6427eb4243e91836e077e" target="_blank">Plausibly Exogenous Variation</a>
+            <span class="pg-desc">A living compilation of plausibly exogenous variation used in empirical economics, maintained by Sangmin Oh (Columbia).</span>
+          </li>
+          <li>
+            <a href="https://sangmino.notion.site/03b2275cd4af43529415910105486280?v=063de7d46a8a44e889961e215f69ca77" target="_blank">Variables Construction in Finance</a>
+            <span class="pg-desc">Community norms on constructing often-used variables in finance research.</span>
+          </li>
+          <li>
+            <a href="https://mixtape.scunning.com/" target="_blank">Causal Inference: The Mixtape</a>
+            <span class="pg-desc">Scott Cunningham's free online textbook on causal inference — essential reading for empirical economists.</span>
+          </li>
+          <li>
+            <a href="https://theeffectbook.net/" target="_blank">The Effect</a>
+            <span class="pg-desc">Nick Huntington-Klein's introduction to research design and causality, with interactive graphics.</span>
+          </li>
+          <li>
+            <a href="https://sangmino.github.io/deadlines/" target="_blank">Finance Conference Deadlines</a>
+            <span class="pg-desc">A curated calendar of submission deadlines for major finance conferences.</span>
+          </li>
+        </ul>
 
-      <div class="public-card">
-        <div class="public-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Finance PhD Talk with Alumni</h3>
-        <p>
-          Founder and organizer of a recurring seminar series connecting current finance PhD students 
-          with alumni working in academia and industry. The initiative provides career guidance, 
-          networking, and mentorship for doctoral students navigating the job market.
-          <br><br>
-          <em style="font-size:13px;color:var(--text-light);">Ongoing since 2024 · Smeal College of Business</em>
-        </p>
+        <div class="pg-section-title">Writing &amp; Presenting</div>
+        <ul class="pg-links">
+          <li>
+            <a href="https://sangmino.notion.site/Model-Writing-in-Economics-bbe9effcf70e4c9b808e82641f5f1748" target="_blank">Model Writings in Economics</a>
+            <span class="pg-desc">Tips on writing in economics with curated examples from top empirical and theoretical papers.</span>
+          </li>
+          <li>
+            <a href="https://sangmino.notion.site/How-to-Make-Academic-Slides-12f1a297c46180b8aaaac5345b6705bc" target="_blank">How to Make Academic Slides</a>
+            <span class="pg-desc">Design principles for effective academic presentations.</span>
+          </li>
+          <li>
+            <a href="https://sangmino.github.io/Documents/reading_papers.pdf" target="_blank">How to Read Papers Critically</a>
+            <span class="pg-desc">Specific tips on how to critically assess an economics research paper.</span>
+          </li>
+          <li>
+            <a href="https://sangmino.notion.site/Figure-Ones-b0dbda79478645af85524febcbf83b7c" target="_blank">Finding Your Figure One</a>
+            <span class="pg-desc">Guidance on developing your paper's central motivating figure.</span>
+          </li>
+        </ul>
       </div>
 
-      <div class="public-card">
-        <div class="public-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div>
+        <div class="pg-section-title">Service &amp; Community</div>
+        <div class="pg-service-card">
+          <h4>Finance PhD Talk with Alumni</h4>
+          <p>Founder and organizer of a recurring seminar series connecting current finance PhD students with alumni working in academia and industry. The initiative provides career guidance, networking, and mentorship for doctoral students navigating the job market.</p>
+          <p class="meta">Ongoing since 2024 · Smeal College of Business</p>
         </div>
-        <h3>PhD Teaching Summit</h3>
-        <p>
-          Served as an organizer and participant in the Smeal College of Business PhD Teaching Summit, 
-          a workshop aimed at developing pedagogical skills and teaching excellence among doctoral 
-          students in business disciplines.
-          <br><br>
-          <em style="font-size:13px;color:var(--text-light);">2023 · Smeal College of Business</em>
-        </p>
-      </div>
+        <div class="pg-service-card">
+          <h4>PhD Teaching Summit</h4>
+          <p>Organizer and participant in the Smeal College of Business PhD Teaching Summit — a workshop developing pedagogical skills and teaching excellence among doctoral students in business disciplines.</p>
+          <p class="meta">2023 · Smeal College of Business</p>
+        </div>
+        <div class="pg-service-card">
+          <h4>Referee Service</h4>
+          <p>Ad-hoc referee for peer-reviewed academic journals at the intersection of real estate finance and data science.</p>
+          <p class="meta">Journal of Real Estate Finance and Economics · Journal of Finance and Data Science</p>
+        </div>
 
-      <div class="public-card">
-        <div class="public-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <h3>Referee Service</h3>
-        <p>
-          Ad-hoc referee for peer-reviewed academic journals, providing expert review on 
-          submissions at the intersection of finance and data science.
-          <br><br>
-          <em style="font-size:13px;color:var(--text-light);">Journal of Real Estate Finance and Economics · Journal of Finance and Data Science</em>
-        </p>
-      </div>
-
-      <div class="public-card">
-        <div class="public-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>Professional Memberships</h3>
-        <p>
-          Active member of leading professional associations in economics and finance, contributing 
-          to the broader academic community through conference participation and disciplinary engagement.
-          <br><br>
-          <em style="font-size:13px;color:var(--text-light);">American Economics Association · American Finance Association · AREUEA</em>
-        </p>
+        <div class="pg-section-title">Grad School Guides</div>
+        <ul class="pg-links">
+          <li>
+            <a href="https://sangmino.github.io/Documents/year1_202108.pdf" target="_blank">Surviving Year One</a>
+            <span class="pg-desc">Takeaways on coursework and the core exam (Sangmin Oh, Columbia).</span>
+          </li>
+          <li>
+            <a href="https://sangmino.github.io/Documents/year4_202208.pdf" target="_blank">Surviving Year Four</a>
+            <span class="pg-desc">A self-evaluation checklist for more productive research in later PhD years.</span>
+          </li>
+          <li>
+            <a href="https://sangmino.github.io/Documents/workflow_public.pdf" target="_blank">Setup for Productive Research</a>
+            <span class="pg-desc">Workflow, apps, and tools for PhD students — presented to incoming Booth students.</span>
+          </li>
+        </ul>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ── CV ── -->
 <section id="cv">
   <div class="page-wrap">
     <div class="section-label">Curriculum Vitae</div>
     <h2 class="section-title">Awards &amp; CV</h2>
-    <p>Pennsylvania State Fellowship · Smeal Small Research Grant · Janiak Family Graduate Scholarship</p>
+    <p>Fellowships, scholarships, and grants supporting my doctoral research at Penn State.</p>
     <div class="cv-awards">
       <span class="cv-award-pill">Pennsylvania State Fellowship 2022–2027</span>
       <span class="cv-award-pill">Smeal Small Research Grant 2025</span>
@@ -938,19 +543,18 @@
       <span class="cv-award-pill">Marie Vitulli Graduate Fellowship 2019</span>
     </div>
     <a href="Golnaz_Bahrami_CV.pdf" class="btn-cv" download>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download Full CV
     </a>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <p>© 2026 Golnaz Bahrami · Smeal College of Business, Pennsylvania State University</p>
   <ul class="footer-links">
     <li><a href="mailto:gxb5298@psu.edu">Email</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#cv">CV</a></li>
+    <li><a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank">Scholar</a></li>
+    <li><a href="Golnaz_Bahrami_CV.pdf" download>CV</a></li>
   </ul>
 </footer>
 
@@ -962,6 +566,5 @@ function toggleAbstract(btn) {
   btn.childNodes[0].textContent = isOpen ? 'Hide abstract ' : 'Abstract ';
 }
 </script>
-
 </body>
 </html>
