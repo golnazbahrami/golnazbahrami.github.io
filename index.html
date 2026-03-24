@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Golnaz Bahrami | Finance PhD Candidate</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -199,9 +199,9 @@
 
       </div>
       <div class="hero-links fade-up delay-4">
-        <a href="/cdn-cgi/l/email-protection#7b1c03194e4942433b0b080e551e1f0e" class="btn-primary">
+        <a id="email-btn" href="#" class="btn-primary">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <span class="__cf_email__" data-cfemail="34534c5601060d0c744447411a515041">[email&#160;protected]</span>
+          <span id="email-btn-text">gxb5298 [at] psu.edu</span>
         </a>
         <a href="Golnaz_Bahrami_CV.pdf" class="btn-outline" download>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -225,7 +225,7 @@
         </div>
         <div class="profile-info-line">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <a href="/cdn-cgi/l/email-protection#4e29362c7b7c77760e3e3d3b602b2a3b"><span class="__cf_email__" data-cfemail="0b6c73693e3932334b7b787e256e6f7e">[email&#160;protected]</span></a>
+          <a id="email-card" href="#">gxb5298 [at] psu.edu</a>
         </div>
         <div class="profile-info-line">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -618,8 +618,39 @@
 <footer>
   <p>© 2026 Golnaz Bahrami · Smeal College of Business, Pennsylvania State University</p>
   <ul class="footer-links">
-    <li><a href="/cdn-cgi/l/email-protection#0166796334333839417172742f646574">Email</a></li>
+    <li><a id="email-footer" href="#">Email</a></li>
     <li><a href="https://scholar.google.com/citations?user=DHDJ19sAAAAJ&hl=en" target="_blank">Scholar</a></li>
     <li><a href="https://www.linkedin.com/in/golnazbahrami/" target="_blank">LinkedIn</a></li>
     <li><a href="Golnaz_Bahrami_CV.pdf" download>CV</a></li>
-  </u
+  </ul>
+</footer>
+
+<script>
+function toggleAbstract(btn) {
+  const abstract = btn.nextElementSibling;
+  const isOpen = abstract.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.childNodes[0].textContent = isOpen ? 'Hide abstract ' : 'Abstract ';
+}
+
+(function() {
+  const u = 'gxb5298';
+  const d = 'psu' + '.' + 'edu';
+  const email = u + '@' + d;
+  const mailto = 'mailto:' + email;
+
+  const btn = document.getElementById('email-btn');
+  if (btn) { btn.href = mailto; }
+
+  const btnText = document.getElementById('email-btn-text');
+  if (btnText) { btnText.textContent = email; }
+
+  const card = document.getElementById('email-card');
+  if (card) { card.href = mailto; card.textContent = email; }
+
+  const footer = document.getElementById('email-footer');
+  if (footer) { footer.href = mailto; }
+})();
+</script>
+</body>
+</html>
